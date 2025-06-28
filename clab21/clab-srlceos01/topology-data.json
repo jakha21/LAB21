@@ -1,0 +1,100 @@
+{
+  "name": "srlceos01",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-305a68fd0018",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ3/ecBKwqZ4p2hWMtE9uohS0vc97HqL65zWOJ5pr/nq"],
+  "nodes": {
+    "ceos": {
+      "index": "0",
+      "shortname": "ceos",
+      "longname": "clab-srlceos01-ceos",
+      "fqdn": "ceos.srlceos01.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/clab21/clab-srlceos01/ceos",
+      "kind": "arista_ceos",
+      "image": "ceos:4.34.1F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:4c:37:f9",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-305a68fd0018",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/jakha/LAB21/clab21/clab-srlceos01/ceos",
+        "clab-node-longname": "clab-srlceos01-ceos",
+        "clab-node-name": "ceos",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/clab21/attempt1.clab.yml",
+        "containerlab": "srlceos01"
+      },
+      "port-bindings": [
+      ]
+    },
+    "srl": {
+      "index": "1",
+      "shortname": "srl",
+      "longname": "clab-srlceos01-srl",
+      "fqdn": "srl.srlceos01.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/clab21/clab-srlceos01/srl",
+      "kind": "nokia_srlinux",
+      "image": "ghcr.io/nokia/srlinux:24.10",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "1a:93:01:00:00:00",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-305a68fd0018",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_srlinux",
+        "clab-node-lab-dir": "/home/jakha/LAB21/clab21/clab-srlceos01/srl",
+        "clab-node-longname": "clab-srlceos01-srl",
+        "clab-node-name": "srl",
+        "clab-node-type": "ixrd2l",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/clab21/attempt1.clab.yml",
+        "containerlab": "srlceos01"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "srl",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:cb:50:ed",
+        "peer": "z"
+      },
+      "z": {
+        "node": "ceos",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:88:f7:bd",
+        "peer": "a"
+      }
+    }
+  ]
+}
