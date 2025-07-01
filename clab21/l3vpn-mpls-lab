@@ -1,0 +1,39 @@
+name: L3VPN-MPLS
+prefix: ""
+
+topology:
+  nodes:
+    PE1:
+      kind: ceos
+      image: ceos:4.34.1F
+    PE2:
+      kind: ceos
+      image: ceos:4.34.1F
+    P1:
+      kind: ceos
+      image: ceos:4.34.1F
+    RR1:
+      kind: ceos
+      image: ceos:4.34.1F
+    CE1:
+      kind: ceos
+      image: ceos:4.34.1F
+    CE2:
+      kind: ceos
+      image: ceos:4.34.1F
+    HOST1:
+      kind: linux
+      image: alpine:latest
+    HOST2:
+      kind: linux
+      image: alpine:latest
+
+  links:
+    - endpoints: [PE1:eth1, P1:eth1]
+    - endpoints: [PE2:eth1, P1:eth2]
+    - endpoints: [PE1:eth2, RR1:eth1]
+    - endpoints: [PE2:eth2, RR1:eth2]
+    - endpoints: [CE1:eth1, PE1:eth3]
+    - endpoints: [CE2:eth1, PE2:eth3]
+    - endpoints: [HOST1:eth1, CE1:eth2]
+    - endpoints: [HOST2:eth1, CE2:eth2]

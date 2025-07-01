@@ -1,0 +1,41 @@
+---
+CE1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.6
+CE2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.8
+P1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.9
+PE1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.4
+PE2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.5
+RR1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 172.20.20.7
+HOST1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.3
+HOST2:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.2

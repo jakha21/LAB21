@@ -1,0 +1,77 @@
+! Startup-config last modified at Tue Jul  1 23:16:24 2025 by admin
+! device: P1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$WsU3Av4of22.UYEJ$UzCLOQd2R2alUOJKviQNq8nDs5qYz2Ryzx/roJSg.dFuhwv5QwwxyYHbGtC0nCYeUStGCZDW2/JfFUt3YkO7G0
+!
+management api http-commands
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname P1
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   description -> PE1
+   no switchport
+   ip address 10.0.0.1/31
+   isis enable SDNBIT
+   isis network point-to-point
+!
+interface Ethernet2
+   description -> PE2
+   no switchport
+   ip address 10.0.0.5/31
+   isis enable SDNBIT
+   isis network point-to-point
+!
+interface Loopback0
+   description Router-ID
+   ip address 3.3.3.3/32
+   isis enable SDNBIT
+!
+interface Management0
+   description MGMT-DOCKER
+   ip address 172.20.20.9/24
+   ipv6 address 3fff:172:20:20::9/64
+!
+ip routing
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+mpls ip
+!
+mpls ldp
+   no shutdown
+!
+router isis SDNBIT
+   net 49.0001.0000.0000.0003.00
+   is-type level-2
+   !
+   address-family ipv4 unicast
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+end

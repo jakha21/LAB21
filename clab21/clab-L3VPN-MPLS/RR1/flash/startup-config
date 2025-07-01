@@ -1,0 +1,101 @@
+! Startup-config last modified at Tue Jul  1 23:16:26 2025 by admin
+! device: RR1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$keRKcoKswDBtzUtE$MJhSFyHFt47ehA8m4pAVcXp5.oAOFymugtRKU7sBbdur7K5KPifRZ90ilA0ws3CNy/X5c1rF4jUHV8TRw0i95/
+!
+management api http-commands
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname RR1
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   description -> PE1
+   no switchport
+   ip address 10.0.0.9/31
+   isis enable SDNBIT
+   isis circuit-type level-2
+   isis network point-to-point
+!
+interface Ethernet2
+   description -> PE2
+   no switchport
+   ip address 10.0.0.13/31
+   isis enable SDNBIT
+   isis circuit-type level-2
+   isis network point-to-point
+!
+interface Loopback0
+   description Router-ID
+   ip address 4.4.4.4/32
+   isis enable SDNBIT
+   isis passive
+!
+interface Management0
+   description MGMT-DOCKER
+   ip address 172.20.20.7/24
+   ipv6 address 3fff:172:20:20::7/64
+!
+ip routing
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+mpls ip
+!
+mpls ldp
+   no shutdown
+!
+router bgp 65000
+   router-id 4.4.4.4
+   neighbor 1.1.1.1 remote-as 65000
+   neighbor 1.1.1.1 update-source Loopback0
+   neighbor 1.1.1.1 route-reflector-client
+   neighbor 1.1.1.1 send-community extended
+   neighbor 2.2.2.2 remote-as 65000
+   neighbor 2.2.2.2 update-source Loopback0
+   neighbor 2.2.2.2 route-reflector-client
+   neighbor 2.2.2.2 send-community extended
+   !
+   address-family ipv4
+      neighbor 1.1.1.1 activate
+      neighbor 2.2.2.2 activate
+      network 4.4.4.4/32
+      redistribute isis level-2
+   !
+   address-family vpn-ipv4
+      neighbor 1.1.1.1 activate
+      neighbor 2.2.2.2 activate
+!
+router isis SDNBIT
+   net 49.0001.0000.0000.0004.00
+   is-type level-2
+   !
+   address-family ipv4 unicast
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+end

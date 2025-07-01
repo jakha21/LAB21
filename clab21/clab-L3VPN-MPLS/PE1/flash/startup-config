@@ -1,0 +1,115 @@
+! Startup-config last modified at Tue Jul  1 23:16:21 2025 by admin
+! device: PE1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$UWMZtbRhbdGzhrRM$4P1Kq0PPfIpvtpj2CKhXwaEYYiMuSgvDFdnYFOQs/HNHl4QHaB4hspTdh9/ouUwhd80FR0W/ocYKH9n2hiy531
+!
+management api http-commands
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname PE1
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+vrf instance MEDELLIN
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   description -> P1
+   no switchport
+   ip address 10.0.0.0/31
+   isis enable SDNBIT
+   isis circuit-type level-2
+   isis network point-to-point
+!
+interface Ethernet2
+   description -> RR1
+   no switchport
+   ip address 10.0.0.8/31
+   isis enable SDNBIT
+   isis circuit-type level-2
+   isis network point-to-point
+!
+interface Ethernet3
+   description -> CE1
+   no switchport
+   vrf MEDELLIN
+   ip address 10.0.1.1/24
+!
+interface Loopback0
+   description Router-ID
+   ip address 1.1.1.1/32
+   isis enable SDNBIT
+   isis passive
+!
+interface Management0
+   description MGMT-DOCKER
+   ip address 172.20.20.4/24
+   ipv6 address 3fff:172:20:20::4/64
+!
+ip routing
+ip routing vrf MEDELLIN
+!
+ip route vrf MEDELLIN 192.168.1.1/32 10.0.1.2
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+mpls ip
+!
+mpls ldp
+   no shutdown
+!
+router bgp 65000
+   router-id 1.1.1.1
+   neighbor 4.4.4.4 remote-as 65000
+   neighbor 4.4.4.4 next-hop-self
+   neighbor 4.4.4.4 update-source Loopback0
+   neighbor 4.4.4.4 send-community extended
+   !
+   address-family ipv4
+      neighbor 4.4.4.4 activate
+      network 1.1.1.1/32
+      redistribute isis level-2
+   !
+   address-family vpn-ipv4
+      neighbor 4.4.4.4 activate
+   !
+   vrf MEDELLIN
+      rd 65000:100
+      route-target import vpn-ipv4 65000:100
+      route-target export vpn-ipv4 65000:100
+      neighbor 10.0.1.2 remote-as 65101
+      !
+      address-family ipv4
+         neighbor 10.0.1.2 activate
+!
+router isis SDNBIT
+   net 49.0001.0000.0000.0001.00
+   is-type level-2
+   !
+   address-family ipv4 unicast
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+end
