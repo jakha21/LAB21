@@ -1,0 +1,15 @@
+# topology documentation: http://containerlab.dev/lab-examples/srl-ceos/
+name: junoslab
+
+topology:
+  nodes:
+    R1:
+        kind: juniper_vjunosevolved
+        image: vrnetlab/juniper_vjunosevolved:24.4R1.8
+    R2:
+        kind: juniper_vjunosevolved
+        image: vrnetlab/juniper_vjunosevolved:24.4R1.8
+    
+
+  links:
+    - endpoints: ["R1:eth9", "R2:eth9"]
