@@ -12,20 +12,20 @@ all:
         ansible_password: admin
       hosts:
         CE1:
-          ansible_host: 172.20.20.6
+          ansible_host: 172.20.20.3
         CE2:
-          ansible_host: 172.20.20.8
+          ansible_host: 172.20.20.4
         P1:
           ansible_host: 172.20.20.9
         PE1:
-          ansible_host: 172.20.20.4
-        PE2:
           ansible_host: 172.20.20.5
-        RR1:
+        PE2:
           ansible_host: 172.20.20.7
+        RR1:
+          ansible_host: 172.20.20.8
     linux:
       hosts:
         HOST1:
-          ansible_host: 172.20.20.3
+          ansible_host: 172.20.20.6
         HOST2:
           ansible_host: 172.20.20.2

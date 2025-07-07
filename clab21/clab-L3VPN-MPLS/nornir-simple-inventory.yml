@@ -3,12 +3,12 @@ CE1:
     username: admin
     password: admin
     platform: ceos
-    hostname: 172.20.20.6
+    hostname: 172.20.20.3
 CE2:
     username: admin
     password: admin
     platform: ceos
-    hostname: 172.20.20.8
+    hostname: 172.20.20.4
 P1:
     username: admin
     password: admin
@@ -18,22 +18,22 @@ PE1:
     username: admin
     password: admin
     platform: ceos
-    hostname: 172.20.20.4
+    hostname: 172.20.20.5
 PE2:
     username: admin
     password: admin
     platform: ceos
-    hostname: 172.20.20.5
+    hostname: 172.20.20.7
 RR1:
     username: admin
     password: admin
     platform: ceos
-    hostname: 172.20.20.7
+    hostname: 172.20.20.8
 HOST1:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.3
+    hostname: 172.20.20.6
 HOST2:
     username: 
     password: 

@@ -1,4 +1,4 @@
-! Startup-config last modified at Tue Jul  1 23:16:21 2025 by admin
+! Startup-config last modified at Mon Jul  7 15:13:16 2025 by root
 ! device: PE1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
 !
 no aaa root
@@ -60,8 +60,8 @@ interface Loopback0
 !
 interface Management0
    description MGMT-DOCKER
-   ip address 172.20.20.4/24
-   ipv6 address 3fff:172:20:20::4/64
+   ip address 172.20.20.5/24
+   ipv6 address 3fff:172:20:20::5/64
 !
 ip routing
 ip routing vrf MEDELLIN
@@ -104,12 +104,5 @@ router isis SDNBIT
    is-type level-2
    !
    address-family ipv4 unicast
-!
-router multicast
-   ipv4
-      software-forwarding kernel
-   !
-   ipv6
-      software-forwarding kernel
 !
 end
