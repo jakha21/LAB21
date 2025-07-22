@@ -1,25 +1,25 @@
 ---
 CE1:
-    hostname: 172.20.20.3
+    hostname: CE1
     groups:
         - arista
 CE2:
-    hostname: 172.20.20.4
+    hostname: CE2
     groups:
       - arista
 P1:
-    hostname: 172.20.20.9
+    hostname: P1
     groups:
       - arista
 PE1:
-    hostname: 172.20.20.5
+    hostname: PE1
     groups:
       - arista
 PE2:
-    hostname: 172.20.20.7
+    hostname: PE2
     groups:
       - arista
 RR1:
-    hostname: 172.20.20.8
+    hostname: RR1
     groups:
       - arista

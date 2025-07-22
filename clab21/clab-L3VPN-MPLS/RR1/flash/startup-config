@@ -1,4 +1,4 @@
-! Startup-config last modified at Mon Jul  7 15:13:13 2025 by root
+! Startup-config last modified at Tue Jul 22 19:11:44 2025 by root
 ! device: RR1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
 !
 no aaa root
@@ -90,12 +90,5 @@ router isis SDNBIT
    is-type level-2
    !
    address-family ipv4 unicast
-!
-router multicast
-   ipv4
-      software-forwarding kernel
-   !
-   ipv6
-      software-forwarding kernel
 !
 end
