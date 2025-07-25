@@ -2,3 +2,5 @@ nornir
 nornir-netmiko
 nornir-utils
 click
+pyeapi
+pyYAML
