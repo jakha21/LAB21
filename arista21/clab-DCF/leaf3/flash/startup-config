@@ -1,0 +1,77 @@
+! Startup-config last modified at Fri Jul 25 15:25:47 2025 by root
+! device: leaf3 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$FUUFd5Z6jx7ry7Y0$c6.3D5o.ld4DBmHn9Ca.k6IkjB/Dpz7kJlHW/zPHUpv4kMW8f94mNcE8.k6s6SKbLPJYk3RmJJzyaphH0l19P.
+!
+management api http-commands
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname leaf3
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet48
+   description -> spine1
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.32/31
+!
+interface Ethernet49
+   description -> spine2
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.34/31
+!
+interface Ethernet50
+   description -> spine3
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.36/31
+!
+interface Ethernet51
+   description -> spine4
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.38/31
+!
+interface Loopback0
+   description LOOPBACK
+   ip address 10.0.65.8/32
+!
+interface Management0
+   description MGMT
+   description MGMT
+   ip address 10.64.129.39/24
+!
+ip routing
+!
+ip route 0.0.0.0/0 172.20.20.1
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+end

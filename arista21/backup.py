@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/jakha/LAB21/.vnetauto/bin/python3
 
 """
 This script retrieves running configurations from Arista EOS devices and saves them to text files.
@@ -38,14 +38,25 @@ def write_to_file(FILENAME, CONTENT):
 
 
 if __name__ == "__main__":
-    NODES = ['Spine-1', 'Spine-2', 'Leaf-1', 'Leaf-2', 'Leaf-3', 'Leaf-4']
+    NODES = ['border_leaf1', 
+             'border_leaf2', 
+             'spine1', 
+             'spine2', 
+             'spine3', 
+             'spine4',
+             'leaf1', 
+             'leaf2', 
+             'leaf3', 
+             'leaf4', 
+             'leaf5', 
+             'leaf6']
 
     for NODE in NODES:
         DEVICE = connect_to_device(NODE)
         if DEVICE:  # Check if connection successful before proceeding
             try:
                 CONTENT = get_running_config(DEVICE)
-                FILENAME = f'{pyeapi.config_for(NODE)["host"]}-config.txt'  # Use config_for for IP retrieval
+                FILENAME = f'backups/{pyeapi.config_for(NODE)["host"]}.cfg'  # Use config_for for IP retrieval
                 write_to_file(FILENAME, CONTENT)
             except Exception as err:
                 print(f"Unexpected error occurred: {err}")  # Print critical errors
