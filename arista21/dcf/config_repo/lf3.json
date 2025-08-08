@@ -1,0 +1,19 @@
+{
+    "interfaces": {
+        "Loopback0": {
+            "name": "Loopback0",
+            "description": "LOOPBACK",
+            "ip": "10.10.0.4/32"
+        },
+        "Ethernet1": {
+            "name": "Ethernet1",
+            "description": "-> SP1",
+            "ip": "172.21.1.5/31"
+        },
+        "Ethernet2": {
+            "name": "Ethernet2",
+            "description": "-> SP2",
+            "ip": "172.21.1.11/31"
+        }
+    }
+}

@@ -1,0 +1,94 @@
+! Startup-config last modified at Mon Jul 28 20:11:04 2025 by root
+! device: spine4 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$c5F8ZQzZNyMbLhL5$NCloeflFsOLU8nPujQxpbIvgfy86WaCsPOgR7I3gqGdg1.mzhFjJNH55qu5gGxXJlyFMA70KKQ9phYou2ePS60
+!
+management api http-commands
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname spine4
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   description -> leaf1
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.23/31
+!
+interface Ethernet2
+   description -> leaf2
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.31/31
+!
+interface Ethernet3
+   description -> leaf3
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.39/31
+!
+interface Ethernet4
+   description -> leaf4
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.47/31
+!
+interface Ethernet5
+   description -> leaf5
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.55/31
+!
+interface Ethernet6
+   description -> leaf6
+   speed 100g-1
+   no switchport
+   ip address 172.16.0.63/31
+!
+interface Ethernet28
+   description -> border_leaf1
+   speed 400g-4
+   no switchport
+   ip address 172.16.0.7/31
+!
+interface Ethernet29
+   description -> border_leaf2
+   speed 400g-4
+   no switchport
+   ip address 172.16.0.15/31
+!
+interface Loopback0
+   description LOOPBACK
+   ip address 10.0.65.5/32
+!
+interface Management0
+   description MGMT
+   ip address 10.64.129.36/24
+!
+ip routing
+!
+ip route 0.0.0.0/0 10.64.129.1
+ip route 0.0.0.0/0 172.20.20.1
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+end
