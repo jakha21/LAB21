@@ -1,5 +1,5 @@
-! Startup-config last modified at Fri Aug  8 12:24:08 2025 by root
-! device: borderleaf1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
+! Startup-config last modified at Fri Aug  8 16:47:36 2025 by root
+! device: border-leaf1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
 !
 no aaa root
 !
@@ -63,12 +63,18 @@ interface Management0
 ip routing
 !
 ip route 0.0.0.0/0 10.64.129.1
-ip route 0.0.0.0/0 172.20.20.1
 !
 ipv6 route ::/0 3fff:172:20:20::1
 !
 router bgp 4230035601
    router-id 10.0.65.0
    bgp always-compare-med
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
 !
 end
