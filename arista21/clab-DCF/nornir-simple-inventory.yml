@@ -1,0 +1,76 @@
+---
+border_leaf1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.31
+border_leaf2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.32
+leaf1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.37
+leaf2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.38
+leaf3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.39
+leaf4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.40
+leaf5:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.41
+leaf6:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.42
+spine1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.33
+spine2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.34
+spine3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.35
+spine4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 10.64.129.36
+server1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 10.64.129.4
+server2:
+    username: 
+    password: 
+    platform: linux
+    hostname: 10.64.129.3
+server3:
+    username: 
+    password: 
+    platform: linux
+    hostname: 10.64.129.2
