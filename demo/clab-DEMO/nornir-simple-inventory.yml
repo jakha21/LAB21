@@ -1,0 +1,21 @@
+---
+sw1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 
+sw2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 
+host1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 
+host2:
+    username: 
+    password: 
+    platform: linux
+    hostname: 

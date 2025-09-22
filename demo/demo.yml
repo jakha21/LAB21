@@ -1,0 +1,36 @@
+name: DEMO
+prefix: ""
+
+topology:
+  nodes:
+    sw1:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+    sw2:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+
+    host1:
+      kind: linux
+      image: alpine:latest
+      network-mode: none
+      binds:
+        - ./cfgs/host1.network.cfg:/etc/network/interfaces:rw
+      exec:
+        - /bin/sh -c "ifup eth1 && /sbin/init"
+
+    host2:
+      kind: linux
+      image: alpine:latest
+      network-mode: none
+      binds:
+        - ./cfgs/host2.network.cfg:/etc/network/interfaces:rw
+      exec:
+        - /bin/sh -c "ifup eth1 && /sbin/init"
+
+  links:
+    - endpoints: ["sw1:eth1", "host1:eth1"]
+    - endpoints: ["sw2:eth1", "host2:eth1"]
+    - endpoints: ["sw1:eth2", "sw2:eth2"]

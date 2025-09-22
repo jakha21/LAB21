@@ -1,0 +1,190 @@
+{
+  "name": "DEMO",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-f0b1c85af7ab",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJeCQM0Qh6JGGXZ7LFDVd7UoHi7hS2GjERU8Tv/ZZWG","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAx6kQ3OU40Uj2Gyzi1N7/H2aY/ak4FqB3qHyyBJ0wg"],
+  "nodes": {
+    "host1": {
+      "index": "0",
+      "shortname": "host1",
+      "longname": "host1",
+      "fqdn": "host1.DEMO.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/demo/clab-DEMO/host1",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0b1c85af7ab",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jakha/LAB21/demo/clab-DEMO/host1",
+        "clab-node-longname": "host1",
+        "clab-node-name": "host1",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/demo/demo.yml",
+        "containerlab": "DEMO"
+      },
+      "port-bindings": [
+      ]
+    },
+    "host2": {
+      "index": "1",
+      "shortname": "host2",
+      "longname": "host2",
+      "fqdn": "host2.DEMO.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/demo/clab-DEMO/host2",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0b1c85af7ab",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jakha/LAB21/demo/clab-DEMO/host2",
+        "clab-node-longname": "host2",
+        "clab-node-name": "host2",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/demo/demo.yml",
+        "containerlab": "DEMO"
+      },
+      "port-bindings": [
+      ]
+    },
+    "sw1": {
+      "index": "2",
+      "shortname": "sw1",
+      "longname": "sw1",
+      "fqdn": "sw1.DEMO.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/demo/clab-DEMO/sw1",
+      "kind": "ceos",
+      "image": "ceos:4.34.1F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "00:1c:73:69:ed:95",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0b1c85af7ab",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/jakha/LAB21/demo/clab-DEMO/sw1",
+        "clab-node-longname": "sw1",
+        "clab-node-name": "sw1",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/demo/demo.yml",
+        "containerlab": "DEMO"
+      },
+      "port-bindings": [
+      ]
+    },
+    "sw2": {
+      "index": "3",
+      "shortname": "sw2",
+      "longname": "sw2",
+      "fqdn": "sw2.DEMO.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/demo/clab-DEMO/sw2",
+      "kind": "ceos",
+      "image": "ceos:4.34.1F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "00:1c:73:43:00:5c",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0b1c85af7ab",
+        "clab-node-group": "",
+        "clab-node-kind": "ceos",
+        "clab-node-lab-dir": "/home/jakha/LAB21/demo/clab-DEMO/sw2",
+        "clab-node-longname": "sw2",
+        "clab-node-name": "sw2",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/demo/demo.yml",
+        "containerlab": "DEMO"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "sw1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:06:fd:73",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:85:7e:ee",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "sw2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:bf:e6:ac",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:54:29:91",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "sw1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:1f:4b:e0",
+        "peer": "z"
+      },
+      "z": {
+        "node": "sw2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:ab:a3:8d",
+        "peer": "a"
+      }
+    }
+  ]
+}
