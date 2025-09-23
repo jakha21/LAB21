@@ -1,4 +1,4 @@
-! Startup-config last modified at Tue Sep 23 15:22:32 2025 by root
+! Startup-config last modified at Tue Sep 23 17:43:52 2025 by root
 ! device: spine1 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
 !
 no aaa root
@@ -16,7 +16,7 @@ service routing protocols model multi-agent
 !
 hostname spine1
 !
-spanning-tree mode mstp
+spanning-tree mode none
 !
 system l1
    unsupported speed action error
@@ -59,5 +59,32 @@ ip routing
 ip route 0.0.0.0/0 172.20.20.1
 !
 ipv6 route ::/0 3fff:172:20:20::1
+!
+router bgp 65001
+   router-id 10.0.0.0
+   bgp listen range 10.0.0.0/24 peer-group LEAF_PEERS remote-as 65001
+   neighbor LEAF_PEERS peer group
+   neighbor LEAF_PEERS update-source Loopback0
+   neighbor LEAF_PEERS route-reflector-client
+   neighbor LEAF_PEERS send-community extended
+   !
+   address-family evpn
+      neighbor LEAF_PEERS activate
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+router ospf 1
+   router-id 1.1.1.1
+   network 10.0.0.0/32 area 0.0.0.0
+   network 172.30.1.0/31 area 0.0.0.0
+   network 172.30.1.2/31 area 0.0.0.0
+   network 172.30.1.4/31 area 0.0.0.0
+   network 172.30.1.6/31 area 0.0.0.0
+   max-lsa 12000
 !
 end

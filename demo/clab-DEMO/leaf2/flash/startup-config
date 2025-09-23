@@ -1,4 +1,4 @@
-! Startup-config last modified at Tue Sep 23 15:22:34 2025 by root
+! Startup-config last modified at Tue Sep 23 17:43:52 2025 by root
 ! device: leaf2 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
 !
 no aaa root
@@ -16,11 +16,17 @@ service routing protocols model multi-agent
 !
 hostname leaf2
 !
-spanning-tree mode mstp
+spanning-tree mode none
 !
 system l1
    unsupported speed action error
    unsupported error-correction action error
+!
+vlan 100
+   name SERVER1_L2VNI
+!
+vlan 200
+   name SERVER2_L2VNI
 !
 management api gnmi
    transport grpc default
@@ -30,6 +36,11 @@ management api netconf
 !
 interface Ethernet5
    description -> SERVER1
+   switchport access vlan 100
+   !
+   evpn ethernet-segment
+      identifier 0010:0000:0000:0001:0000
+      route-target import 00:10:00:00:00:01
 !
 interface Ethernet11
    description -> SPINE1
@@ -47,10 +58,55 @@ interface Loopback0
 !
 interface Management0
 !
+interface Vlan100
+   ip address virtual 192.168.1.254/24
+!
+interface Vxlan1
+   vxlan source-interface Loopback0
+   vxlan udp-port 4789
+   vxlan vlan 100 vni 10100
+   vxlan vlan 200 vni 10200
+!
 ip routing
 !
 ip route 0.0.0.0/0 172.20.20.1
 !
 ipv6 route ::/0 3fff:172:20:20::1
+!
+router bgp 65001
+   router-id 10.0.0.3
+   neighbor SPINE_PEERS peer group
+   neighbor SPINE_PEERS remote-as 65001
+   neighbor SPINE_PEERS update-source Loopback0
+   neighbor SPINE_PEERS send-community extended
+   neighbor 10.0.0.0 peer group SPINE_PEERS
+   neighbor 10.0.0.1 peer group SPINE_PEERS
+   !
+   vlan 100
+      rd auto
+      route-target both 100:10100
+      redistribute learned
+   !
+   vlan 200
+      rd auto
+      route-target both 200:10200
+      redistribute learned
+   !
+   address-family evpn
+      neighbor SPINE_PEERS activate
+!
+router multicast
+   ipv4
+      software-forwarding kernel
+   !
+   ipv6
+      software-forwarding kernel
+!
+router ospf 1
+   router-id 22.22.22.22
+   network 10.0.0.3/32 area 0.0.0.0
+   network 172.30.1.2/31 area 0.0.0.0
+   network 172.30.1.10/31 area 0.0.0.0
+   max-lsa 12000
 !
 end
