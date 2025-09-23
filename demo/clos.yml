@@ -1,0 +1,64 @@
+name: DEMO
+prefix: ""
+
+topology:
+  nodes:
+    spine1:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+    spine2:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+
+    leaf1:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+    leaf2:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+    leaf3:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+    leaf4:
+      kind: ceos
+      image: ceos:4.34.1F
+      network-mode: none
+      
+    server1:
+      kind: linux
+      image: alpine:latest
+      network-mode: none
+      exec:
+        - ip link set eth0 up
+        - ip addr add 192.168.1.100/24 dev eth0
+        - ip link set eth1 up
+        - ip route add default via 192.168.1.254
+        
+    server2:
+      kind: linux
+      image: alpine:latest
+      network-mode: none
+      exec:
+        - ip link set eth0 up
+        - ip addr add 192.168.2.100/24 dev eth0
+        - ip link set eth1 up
+        - ip route add default via 192.168.2.254
+
+  links:
+    - endpoints: ["spine1:eth1", "leaf1:eth11"]
+    - endpoints: ["spine1:eth2", "leaf2:eth11"]
+    - endpoints: ["spine1:eth3", "leaf3:eth11"]
+    - endpoints: ["spine1:eth4", "leaf4:eth11"]
+    - endpoints: ["spine2:eth1", "leaf1:eth12"]
+    - endpoints: ["spine2:eth2", "leaf2:eth12"]
+    - endpoints: ["spine2:eth3", "leaf3:eth12"]
+    - endpoints: ["spine2:eth4", "leaf4:eth12"]
+    - endpoints: ["leaf1:eth5", "server1:eth0"]
+    - endpoints: ["leaf2:eth5", "server1:eth1"]
+    - endpoints: ["leaf3:eth5", "server2:eth0"]
+    - endpoints: ["leaf4:eth5", "server2:eth1"]

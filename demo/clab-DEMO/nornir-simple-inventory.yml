@@ -1,20 +1,40 @@
 ---
-sw1:
+leaf1:
     username: admin
     password: admin
     platform: ceos
     hostname: 
-sw2:
+leaf2:
     username: admin
     password: admin
     platform: ceos
     hostname: 
-host1:
+leaf3:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 
+leaf4:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 
+spine1:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 
+spine2:
+    username: admin
+    password: admin
+    platform: ceos
+    hostname: 
+server1:
     username: 
     password: 
     platform: linux
     hostname: 
-host2:
+server2:
     username: 
     password: 
     platform: linux

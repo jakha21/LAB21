@@ -11,13 +11,21 @@ all:
         ansible_user: admin
         ansible_password: admin
       hosts:
-        sw1:
+        leaf1:
           ansible_host: 
-        sw2:
+        leaf2:
+          ansible_host: 
+        leaf3:
+          ansible_host: 
+        leaf4:
+          ansible_host: 
+        spine1:
+          ansible_host: 
+        spine2:
           ansible_host: 
     linux:
       hosts:
-        host1:
+        server1:
           ansible_host: 
-        host2:
+        server2:
           ansible_host: 

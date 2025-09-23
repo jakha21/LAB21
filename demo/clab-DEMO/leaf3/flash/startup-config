@@ -1,0 +1,56 @@
+! Startup-config last modified at Tue Sep 23 15:22:36 2025 by root
+! device: leaf3 (cEOSLab, EOS-4.34.1F-42424637.4341F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$zXwSaq9CXsS5iTTx$sPUEn0gQRvte2mfKVhNAvzpgclzUMMU4ExhLUgq.2Z7j.3/maTCQ7ZY0OoMKBK3m1wC90gc/m/C.yTyYMgCWN/
+!
+management api http-commands
+   no shutdown
+!
+no service interface inactive port-id allocation disabled
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname leaf3
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet5
+   description -> SERVER2
+!
+interface Ethernet11
+   description -> SPINE1
+   no switchport
+   ip address 172.30.1.5/31
+!
+interface Ethernet12
+   description -> SPINE2
+   no switchport
+   ip address 172.30.1.13/31
+!
+interface Loopback0
+   description -> LOOPBACK0
+   ip address 10.0.0.4/32
+!
+interface Management0
+!
+ip routing
+!
+ip route 0.0.0.0/0 172.20.20.1
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+end
