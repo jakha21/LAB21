@@ -1,0 +1,14 @@
+hostname ZTP-DEVICE
+!
+username admin privilege 15 secret admin
+!
+spanning-tree mode none
+!
+interface Ethernet1
+   description -> ZTP-SERVER
+!
+banner motd
+*** Provisioned by Zero Touch Provisioning (ZTP) ***
+!
+end
+!

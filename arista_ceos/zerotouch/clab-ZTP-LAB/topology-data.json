@@ -1,0 +1,144 @@
+{
+  "name": "ZTP-LAB",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-7a61616ece68",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJeCQM0Qh6JGGXZ7LFDVd7UoHi7hS2GjERU8Tv/ZZWG","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAx6kQ3OU40Uj2Gyzi1N7/H2aY/ak4FqB3qHyyBJ0wg"],
+  "nodes": {
+    "sw1": {
+      "index": "0",
+      "shortname": "sw1",
+      "longname": "sw1",
+      "fqdn": "sw1.ZTP-LAB.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/arista_ceos/zerotouch/clab-ZTP-LAB/sw1",
+      "kind": "arista_ceos",
+      "image": "ceos:4.34.1F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:a6:37:e2",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-7a61616ece68",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/jakha/LAB21/arista_ceos/zerotouch/clab-ZTP-LAB/sw1",
+        "clab-node-longname": "sw1",
+        "clab-node-name": "sw1",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/arista_ceos/zerotouch/ztp-lab.yml",
+        "containerlab": "ZTP-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "sw2": {
+      "index": "1",
+      "shortname": "sw2",
+      "longname": "sw2",
+      "fqdn": "sw2.ZTP-LAB.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/arista_ceos/zerotouch/clab-ZTP-LAB/sw2",
+      "kind": "arista_ceos",
+      "image": "ceos:4.34.1F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:d4:47:c7",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-7a61616ece68",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/jakha/LAB21/arista_ceos/zerotouch/clab-ZTP-LAB/sw2",
+        "clab-node-longname": "sw2",
+        "clab-node-name": "sw2",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/arista_ceos/zerotouch/ztp-lab.yml",
+        "containerlab": "ZTP-LAB"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ztp-server": {
+      "index": "2",
+      "shortname": "ztp-server",
+      "longname": "ztp-server",
+      "fqdn": "ztp-server.ZTP-LAB.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/arista_ceos/zerotouch/clab-ZTP-LAB/ztp-server",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-7a61616ece68",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jakha/LAB21/arista_ceos/zerotouch/clab-ZTP-LAB/ztp-server",
+        "clab-node-longname": "ztp-server",
+        "clab-node-name": "ztp-server",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/arista_ceos/zerotouch/ztp-lab.yml",
+        "containerlab": "ZTP-LAB"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "sw1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:14:df:96",
+        "peer": "z"
+      },
+      "z": {
+        "node": "sw2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:2e:cb:03",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "sw1",
+        "interface": "eth5",
+        "mac": "aa:c1:ab:be:eb:d6",
+        "peer": "z"
+      },
+      "z": {
+        "node": "ztp-server",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:bb:a5:52",
+        "peer": "a"
+      }
+    }
+  ]
+}

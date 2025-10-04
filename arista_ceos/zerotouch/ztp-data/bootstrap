@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import requests
+
+config_url = "http://192.168.100.1:8080/configs/generic.cfg"
+print(f"ZTP - Fetching configuration from {config_url}")
+
+response = requests.get(config_url)
+if response.status_code == 200:
+    with open("/mnt/flash/startup-config", "w") as config_file:
+        config_file.write(response.text)
+    print("ZTP - Configuration applied successfully.")
+else:   
+    print(f"ZTP - Failed to fetch configuration. Status code: {response.status_code}")

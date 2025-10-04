@@ -1,0 +1,32 @@
+name: ZTP-LAB
+prefix: ""
+
+topology:
+  nodes:
+    sw1:
+      kind: arista_ceos
+      image: ceos:4.34.1F
+      suppress-startup-config: true
+
+    sw2:
+      kind: arista_ceos
+      image: ceos:4.34.1F
+      suppress-startup-config: true
+
+    ztp-server:
+      kind: linux
+      image: alpine:latest
+      binds:
+        - ./ztp-data:/var/www/ztp:rw
+        - ./dnsmasq.conf:/etc/dnsmasq.conf:ro
+      exec:
+        - apk add --no-cache dnsmasq python3 py3-pip
+        - ip addr add 192.168.100.1/24 dev eth1
+        - ip link set eth1 up
+        - dnsmasq
+
+  links:
+    - endpoints: ["sw1:eth1", "sw2:eth1"]
+    - endpoints: ["sw1:eth5", "ztp-server:eth1"]
+
+    
