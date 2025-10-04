@@ -1,0 +1,36 @@
+---
+leaf1:
+    username: admin
+    password: admin@123
+    platform: juniper_vjunosevolved
+    hostname: 172.20.20.4
+leaf2:
+    username: admin
+    password: admin@123
+    platform: juniper_vjunosevolved
+    hostname: 172.20.20.6
+leaf3:
+    username: admin
+    password: admin@123
+    platform: juniper_vjunosevolved
+    hostname: 172.20.20.5
+spine1:
+    username: admin
+    password: admin@123
+    platform: juniper_vjunosevolved
+    hostname: 172.20.20.8
+spine2:
+    username: admin
+    password: admin@123
+    platform: juniper_vjunosevolved
+    hostname: 172.20.20.7
+server1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.3
+server4:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.2

@@ -4,3 +4,4 @@ nornir-utils
 click
 pyeapi
 pyYAML
+requests
