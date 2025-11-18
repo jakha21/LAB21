@@ -1,35 +1,30 @@
 ---
-leaf1:
+R1:
     username: admin
     password: admin@123
     platform: juniper_vjunosevolved
-    hostname: 172.20.20.4
-leaf2:
+    hostname: 172.20.20.3
+R2:
     username: admin
     password: admin@123
     platform: juniper_vjunosevolved
     hostname: 172.20.20.6
-leaf3:
+R3:
     username: admin
     password: admin@123
     platform: juniper_vjunosevolved
-    hostname: 172.20.20.5
-spine1:
-    username: admin
-    password: admin@123
-    platform: juniper_vjunosevolved
-    hostname: 172.20.20.8
-spine2:
+    hostname: 172.20.20.4
+R4:
     username: admin
     password: admin@123
     platform: juniper_vjunosevolved
     hostname: 172.20.20.7
-server1:
+SERVER1:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.3
-server4:
+    hostname: 172.20.20.5
+SERVER2:
     username: 
     password: 
     platform: linux

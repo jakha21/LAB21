@@ -1,0 +1,39 @@
+name: ROUTELAB
+prefix: ""
+
+topology:
+  nodes:
+    R1:
+        kind: juniper_vjunosevolved
+        image: vrnetlab/juniper_vjunosevolved:24.4R1.8
+    R2:
+        kind: juniper_vjunosevolved
+        image: vrnetlab/juniper_vjunosevolved:24.4R1.8
+    R3:
+        kind: juniper_vjunosevolved
+        image: vrnetlab/juniper_vjunosevolved:24.4R1.8    
+    R4:
+        kind: juniper_vjunosevolved
+        image: vrnetlab/juniper_vjunosevolved:24.4R1.8
+    
+    SERVER1:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 192.168.100.10/24 dev eth1
+        - ip link set eth1 up
+    SERVER2:
+      kind: linux
+      image: alpine:latest
+      exec:
+        - ip addr add 192.168.100.20/24 dev eth1
+        - ip link set eth1 up
+        
+  links:
+    - endpoints: ["R1:et-0/0/4", "R2:et-0/0/4"]
+    - endpoints: ["R1:et-0/0/5", "R3:et-0/0/5"]
+    - endpoints: ["R4:et-0/0/6", "R2:et-0/0/6"]
+    - endpoints: ["R4:et-0/0/7", "R3:et-0/0/7"]
+    - endpoints: ["R1:et-0/0/0", "SERVER1:eth1"]
+    - endpoints: ["R4:et-0/0/0", "SERVER2:eth1"]
+
