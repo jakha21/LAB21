@@ -1,0 +1,305 @@
+{
+  "name": "ISP",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-29bb7861cf07",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAx6kQ3OU40Uj2Gyzi1N7/H2aY/ak4FqB3qHyyBJ0wg","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJeCQM0Qh6JGGXZ7LFDVd7UoHi7hS2GjERU8Tv/ZZWG"],
+  "nodes": {
+    "CUST1": {
+      "index": "0",
+      "shortname": "CUST1",
+      "longname": "CUST1",
+      "fqdn": "CUST1.ISP.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/CUST1",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-29bb7861cf07",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/CUST1",
+        "clab-node-longname": "CUST1",
+        "clab-node-name": "CUST1",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/juniper_cjunos/isp.yml",
+        "containerlab": "ISP"
+      },
+      "port-bindings": [
+      ]
+    },
+    "CUST2": {
+      "index": "1",
+      "shortname": "CUST2",
+      "longname": "CUST2",
+      "fqdn": "CUST2.ISP.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/CUST2",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-29bb7861cf07",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/CUST2",
+        "clab-node-longname": "CUST2",
+        "clab-node-name": "CUST2",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/juniper_cjunos/isp.yml",
+        "containerlab": "ISP"
+      },
+      "port-bindings": [
+      ]
+    },
+    "R1": {
+      "index": "2",
+      "shortname": "R1",
+      "longname": "R1",
+      "fqdn": "R1.ISP.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R1",
+      "kind": "juniper_cjunosevolved",
+      "image": "cjunosevolved:25.2R1.8-EVO",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-29bb7861cf07",
+        "clab-node-group": "",
+        "clab-node-kind": "juniper_cjunosevolved",
+        "clab-node-lab-dir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R1",
+        "clab-node-longname": "R1",
+        "clab-node-name": "R1",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/juniper_cjunos/isp.yml",
+        "containerlab": "ISP"
+      },
+      "port-bindings": [
+      ]
+    },
+    "R2": {
+      "index": "3",
+      "shortname": "R2",
+      "longname": "R2",
+      "fqdn": "R2.ISP.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R2",
+      "kind": "juniper_cjunosevolved",
+      "image": "cjunosevolved:25.2R1.8-EVO",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-29bb7861cf07",
+        "clab-node-group": "",
+        "clab-node-kind": "juniper_cjunosevolved",
+        "clab-node-lab-dir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R2",
+        "clab-node-longname": "R2",
+        "clab-node-name": "R2",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/juniper_cjunos/isp.yml",
+        "containerlab": "ISP"
+      },
+      "port-bindings": [
+      ]
+    },
+    "R3": {
+      "index": "4",
+      "shortname": "R3",
+      "longname": "R3",
+      "fqdn": "R3.ISP.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R3",
+      "kind": "juniper_cjunosevolved",
+      "image": "cjunosevolved:25.2R1.8-EVO",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-29bb7861cf07",
+        "clab-node-group": "",
+        "clab-node-kind": "juniper_cjunosevolved",
+        "clab-node-lab-dir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R3",
+        "clab-node-longname": "R3",
+        "clab-node-name": "R3",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/juniper_cjunos/isp.yml",
+        "containerlab": "ISP"
+      },
+      "port-bindings": [
+      ]
+    },
+    "R4": {
+      "index": "5",
+      "shortname": "R4",
+      "longname": "R4",
+      "fqdn": "R4.ISP.io",
+      "group": "",
+      "labdir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R4",
+      "kind": "juniper_cjunosevolved",
+      "image": "cjunosevolved:25.2R1.8-EVO",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-29bb7861cf07",
+        "clab-node-group": "",
+        "clab-node-kind": "juniper_cjunosevolved",
+        "clab-node-lab-dir": "/home/jakha/LAB21/juniper_cjunos/clab-ISP/R4",
+        "clab-node-longname": "R4",
+        "clab-node-name": "R4",
+        "clab-node-type": "",
+        "clab-owner": "jakha",
+        "clab-topo-file": "/home/jakha/LAB21/juniper_cjunos/isp.yml",
+        "containerlab": "ISP"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "R1",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:fe:f5:4b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "R2",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:51:dc:7d",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "R1",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:75:33:e8",
+          "peer": "z"
+        },
+        "z": {
+          "node": "R3",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:20:d3:64",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "R4",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:22:43:ff",
+          "peer": "z"
+        },
+        "z": {
+          "node": "R2",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:e1:01:83",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "R4",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:88:24:f6",
+          "peer": "z"
+        },
+        "z": {
+          "node": "R3",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:14:18:77",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "R1",
+          "interface": "eth9",
+          "mac": "aa:c1:ab:49:07:09",
+          "peer": "z"
+        },
+        "z": {
+          "node": "CUST1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:16:37:38",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "R4",
+          "interface": "eth9",
+          "mac": "aa:c1:ab:91:58:e6",
+          "peer": "z"
+        },
+        "z": {
+          "node": "CUST2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:05:d5:31",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

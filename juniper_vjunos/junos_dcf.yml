@@ -12,7 +12,7 @@ topology:
 
     leaf1:
         kind: juniper_vjunosevolved
-        image: vrnetlab/juniper_vjunosevolved:24.4R1.8    
+        image: vrnetlab/juniper_vjunosevolved:24.4R1.8 
     leaf3:
         kind: juniper_vjunosevolved
         image: vrnetlab/juniper_vjunosevolved:24.4R1.8
@@ -20,15 +20,26 @@ topology:
     server1:
       kind: linux
       image: alpine:latest
+      cpu: 0.5
+      memory: 256MB
+      exec:
+        - ip addr add 10.1.1.1/24 dev ens34
+        - ip link set ens34 up
+        - apk add nano
     server4:
       kind: linux
       image: alpine:latest
+      cpu: 0.5
+      memory: 265MB
+      exec:
+        - ip addr add 10.1.1.4/24 dev ens34
+        - ip link set ens34 up
+        - apk add nano
         
   links:
-    - endpoints: ["spine1:eth10", "leaf1:eth10"]
-    - endpoints: ["spine1:eth12", "leaf3:eth10"]
-    - endpoints: ["spine2:eth10", "leaf1:eth11"]
-    - endpoints: ["spine2:eth12", "leaf3:eth11"]
-    - endpoints: ["leaf1:eth2", "server1:ens34"]
-    - endpoints: ["leaf3:eth3", "server4:ens34"]
-
+    - endpoints: ["spine1:ge-0/0/0", "leaf1:ge-0/0/0"]
+    - endpoints: ["spine1:ge-0/0/2", "leaf3:ge-0/0/0"]
+    - endpoints: ["spine2:ge-0/0/0", "leaf1:ge-0/0/1"]
+    - endpoints: ["spine2:ge-0/0/2", "leaf3:ge-0/0/1"]
+    - endpoints: ["leaf1:ge-0/0/2", "server1:ens34"]
+    - endpoints: ["leaf3:ge-0/0/3", "server4:ens34"]

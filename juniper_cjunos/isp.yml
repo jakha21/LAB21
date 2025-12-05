@@ -1,0 +1,49 @@
+name: ISP
+prefix: ""
+
+topology:
+  nodes:
+    R1:
+        kind: juniper_cjunosevolved
+        image: cjunosevolved:25.2R1.8-EVO
+        env: 
+            CPTX_COSIM: "BT"
+    R2:
+        kind: juniper_cjunosevolved
+        image: cjunosevolved:25.2R1.8-EVO
+        env: 
+            CPTX_COSIM: "BT"
+    R3:
+        kind: juniper_cjunosevolved
+        image: cjunosevolved:25.2R1.8-EVO
+        env: 
+            CPTX_COSIM: "BT"       
+    R4:
+        kind: juniper_cjunosevolved
+        image: cjunosevolved:25.2R1.8-EVO
+        env: 
+            CPTX_COSIM: "BT"
+    
+    CUST1:
+      kind: linux
+      image: alpine:latest
+      memory: 256MB
+      exec:
+        - ip addr add 192.168.100.10/24 dev eth1
+        - ip link set eth1 up
+    CUST2:
+      kind: linux
+      image: alpine:latest
+      memory: 256MB
+      exec:
+        - ip addr add 192.168.100.20/24 dev eth1
+        - ip link set eth1 up
+        
+  links:
+    - endpoints: ["R1:et-0/0/0", "R2:et-0/0/0"]
+    - endpoints: ["R1:et-0/0/1", "R3:et-0/0/0"]
+    - endpoints: ["R4:et-0/0/0", "R2:et-0/0/1"]
+    - endpoints: ["R4:et-0/0/1", "R3:et-0/0/1"]
+    - endpoints: ["R1:et-0/0/5", "CUST1:eth1"]
+    - endpoints: ["R4:et-0/0/5", "CUST2:eth1"]
+
